@@ -49,6 +49,12 @@ def h1(s):
     return res
 
 def h3(s):
-    # implement this function
     board, _, _ = s
-    return 0
+    goal = (1, 2, 3, 4, 5, 6, 7, 8, 0)
+    h_value = 0
+    for i in range(9):
+        if board[i] != goal[i]:
+            row_distance = abs(i // 3 - goal.index(board[i]) // 3)
+            col_distance = abs(i % 3 - goal.index(board[i]) % 3)
+            h_value += row_distance + col_distance
+    return h_value
